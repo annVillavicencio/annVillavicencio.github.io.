@@ -1,5 +1,5 @@
 :root {
-    --ami-black: #0B1009;
+    --ami-black: #101218;
     --ami-light-green: #DBFF99;
     --ami-dark-green: #64B60A;
     --ami-bg-gray: #EFF0EB;
@@ -15,9 +15,13 @@ body {
 
 /* --- Sidebar --- */
 .sidebar {
-    width: 260px;
+    width: 222px;
+    min-width: 222px;
+    max-width: 222px;
+    height: 100vh;
+    flex: 0 0 222px;
+    flex-shrink: 0;
     background-color: var(--ami-black);
-    min-height: 100vh;
 }
 
 .sidebar-link {

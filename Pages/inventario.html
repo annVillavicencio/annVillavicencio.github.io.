@@ -1,0 +1,306 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AMI - Inventario</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- CSS Personalizado -->
+    <link rel="stylesheet" href="../CSS/style.css">
+    <style>
+        /* Aplicación rápida de tu paleta de colores base */
+        body { background-color: #0B1009; color: #EFF0EB; }
+        .card-custom { background-color: #121810; border: 1px solid rgba(255, 255, 255, 0.05); }
+        .text-neon-green { color: #DBFF99; }
+        .bg-neon-green { background-color: #DBFF99; color: #0B1009; }
+        .text-neon-pink { color: #FFD4F8; }
+        .bg-neon-pink { background-color: #FFD4F8; color: #0B1009; }
+        .sidebar-active { background-color: #FFD4F8; color: #0B1009 !important; font-weight: bold; }
+        
+        /* Ajustes de dropdowns y tablas oscuras */
+        .dropdown-menu-dark-custom { background-color: #121810; border: 1px solid #333; }
+        .dropdown-item:hover { background-color: #2a3328; color: #DBFF99; }
+        .table-dark { --bs-table-bg: transparent; --bs-table-border-color: rgba(255,255,255,0.1); }
+        .text-secondary:hover { color: #EFF0EB !important; }
+    </style>
+</head>
+<body>
+    <div class="d-flex" id="wrapper">
+        
+        <!-- Sidebar (Menú Lateral) -->
+        
+        <div class="sidebar" id="sidebar-wrapper" style="background-color: #101218; border-right: 1px solid rgba(16, 18, 24);">
+            <div class="sidebar-heading text-center py-4">
+                <img src="../Assets/Logo_Ami.png" alt="AMI Logo" class="img-fluid w-75">
+            </div>
+            <div class="list-group list-group-flush px-3 sidebar-menu">
+                <!-- Enlace al Inicio -->
+                <a href="../index.html" class="list-group-item list-group-item-action sidebar-link rounded-3 mb-2 text-white bg-transparent">
+                    <i class="bi bi-house-door me-2"></i> Inicio
+                </a>
+                <!-- Active Tab: Inventario -->
+                <a href="inventario.html" class="list-group-item list-group-item-action sidebar-active rounded-3 mb-2">
+                    <i class="bi bi-car-front me-2"></i> Inventario
+                </a>
+                <a href="ventas.html" class="list-group-item list-group-item-action sidebar-link rounded-3 mb-2 text-white bg-transparent">
+                    <i class="bi bi-display me-2"></i> Ventas
+                </a>
+                <a href="compras.html" class="list-group-item list-group-item-action sidebar-link rounded-3 mb-2 text-white bg-transparent">
+                    <i class="bi bi-cart3 me-2"></i> Compras
+                </a>
+                <a href="clientes.html" class="list-group-item list-group-item-action sidebar-link rounded-3 mb-2 text-white bg-transparent">
+                    <i class="bi bi-people me-2"></i> Clientes
+                </a>
+                <a href="marketing.html" class="list-group-item list-group-item-action sidebar-link rounded-3 mb-2 text-white bg-transparent">
+                    <i class="bi bi-megaphone me-2"></i> Marketing
+                </a>
+                <a href="reportes.html" class="list-group-item list-group-item-action sidebar-link rounded-3 mb-2 text-white bg-transparent">
+                    <i class="bi bi-bar-chart me-2"></i> Análisis
+                </a>
+                <a href="usuarios.html" class="list-group-item list-group-item-action sidebar-link rounded-3 mb-2 text-white bg-transparent">
+                    <i class="bi bi-person-gear me-2"></i> Usuarios
+                </a>
+                
+                <div class="mt-4 mb-3">
+                    <a href="#" class="list-group-item list-group-item-action sidebar-link rounded-3 text-white bg-transparent">
+                        <i class="bi bi-box-arrow-right me-2"></i> Salir
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div id="page-content-wrapper" class="w-100">
+            <!-- Navbar Superior -->
+            <nav class="navbar navbar-expand-lg navbar-dark bg-transparent py-3 px-4 border-bottom border-secondary border-opacity-25">
+                <div class="container-fluid">
+                    <div class="ms-auto d-flex align-items-center">
+                        <div class="position-relative me-4 cursor-pointer text-white">
+                            <i class="bi bi-bell fs-5"></i>
+                        </div>
+                        <div class="dropdown">
+                            <div class="d-flex align-items-center cursor-pointer text-white" data-bs-toggle="dropdown">
+                                <img src="../Assets/User.jpg" alt="Usuario" class="rounded-circle me-2" style="width: 35px; height: 35px; object-fit: cover;">
+                                <span class="fw-bold small">Usuario <i class="bi bi-chevron-down ms-1 text-muted"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Contenido Principal -->
+            <div class="container-fluid px-4 py-4">
+                
+                <div class="mb-4">
+                    <h3 class="fw-bold mb-1">Inventario</h3>
+                    <p class="text-secondary small mb-1">Inicio <span class="text-neon-pink">/ Inventario</span></p>
+                    <p class="text-secondary small">Gestiona los vehículos registrados en AMI.</p>
+                </div>
+
+                <div class="row g-4">
+                    <!-- Columna Izquierda (Buscador y Tabla) -->
+                    <div class="col-lg-8">
+                        
+                        <!-- Tarjeta de Búsqueda -->
+                        <div class="card card-custom rounded-4 p-4 mb-4 position-relative overflow-hidden">
+                            <div class="row position-relative z-1">
+                                <div class="col-md-9">
+                                    <h5 class="fw-bold">Buscar vehículo</h5>
+                                    <p class="text-secondary small">Encuentra vehículos por marca, modelo, año o placa.</p>
+                                    
+                                    <div class="d-flex gap-2 mt-4 mb-4">
+                                        <div class="input-group" style="max-width: 400px;">
+                                            <span class="input-group-text bg-dark border-secondary border-opacity-25 text-secondary rounded-start-pill"><i class="bi bi-search"></i></span>
+                                            <input type="text" class="form-control bg-dark border-secondary border-opacity-25 text-white rounded-end-pill" placeholder="Buscar por marca, modelo, año, placa...">
+                                        </div>
+                                        <button class="btn bg-neon-green fw-bold rounded-pill px-4">Buscar</button>
+                                    </div>
+                                    
+                                    <!-- Botón que activa la Ventana Emergente (Modal) -->
+                                    <button class="btn rounded-pill px-4 small" style="border: 1px solid #DBFF99; color: #DBFF99;" data-bs-toggle="modal" data-bs-target="#modalAgregarAuto">
+                                        <i class="bi bi-plus"></i> Agregar vehículo
+                                    </button>
+                                </div>
+                            </div>
+                            <!-- Imagen del BMW integrada -->
+                            <img src="../Assets/Auto.png" alt="Car" class="position-absolute end-0 top-0 h-100" style="width: 45%; object-fit: contain; mask-image: linear-gradient(to left, black 70%, transparent); -webkit-mask-image: linear-gradient(to left, black 70%, transparent); opacity: 0.9;">
+                        </div>
+
+                        <!-- Tarjeta de Tabla -->
+                        <div class="card card-custom rounded-4 p-4">
+                            <div class="d-flex justify-content-between align-items-center mb-4">
+                                <div>
+                                    <h5 class="fw-bold mb-0">Lista de vehículos</h5>
+                                    <p class="text-secondary small mb-0">Consulta y administra los vehículos registrados.</p>
+                                </div>
+                                <select class="form-select bg-dark text-white border-secondary border-opacity-25 rounded-3 w-auto small">
+                                    <option>Todos los estados</option>
+                                    <option>Disponible</option>
+                                    <option>Vendido</option>
+                                </select>
+                            </div>
+
+                            <div class="table-responsive">
+                                <table class="table table-dark table-hover text-white align-middle">
+                                    <thead class="text-secondary">
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Modelo</th>
+                                            <th>Descripcion</th>
+                                            <th>Año</th>
+                                            <th>Precio</th>
+                                            <th>Estado</th>
+                                            <th>Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Fila de ejemplo vacía (repite esto 5 veces) -->
+                                        <tr>
+                                            <td><span class="placeholder-line" style="width: 70px;"></span></td>
+                                            <td><span class="placeholder-line" style="width: 100px;"></span></td>
+                                            <td><span class="placeholder-line" style="width: 90px;"></span></td>
+                                            <td><span class="placeholder-line" style="width: 120px;"></span></td>
+                                            <td><span class="placeholder-line" style="width: 80px;"></span></td>
+                                            <td><span class="placeholder-line" style="width: 90px;"></span></td>
+                                            <td class="text-center text-secondary"><i class="bi bi-three-dots-vertical cursor-pointer"></i></td>
+                                        </tr>
+                                        
+                                    
+                                                <div class="dropdown">
+                                                    <button class="btn btn-link text-secondary p-0" type="button" data-bs-toggle="dropdown"><i class="bi bi-three-dots-vertical"></i></button>
+                                                    <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-dark-custom shadow">
+                                                        <li><a class="dropdown-item text-white" href="#"><i class="bi bi-eye me-2"></i> Ver</a></li>
+                                                        <li><a class="dropdown-item text-white" href="#"><i class="bi bi-pencil me-2"></i> Editar</a></li>
+                                                        <li><a class="dropdown-item text-white" href="#"><i class="bi bi-arrow-clockwise me-2"></i> Actualizar</a></li>
+                                                        <li><hr class="dropdown-divider border-secondary"></li>
+                                                        <li><a class="dropdown-item text-danger" href="#"><i class="bi bi-trash me-2"></i> Eliminar</a></li>
+                                                    </ul>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Columna Derecha (Estadísticas) -->
+                    <div class="col-lg-4 d-flex flex-column gap-3">
+                        <div class="card card-custom rounded-4 p-3 d-flex flex-row align-items-center">
+                            <div class="rounded-3 d-flex justify-content-center align-items-center me-3" style="width: 50px; height: 50px; background-color: rgba(219, 255, 153, 0.1);">
+                                <i class="bi bi-car-front fs-4 text-neon-green"></i>
+                            </div>
+                            <div>
+                                <h3 class="fw-bold mb-0 text-neon-green">---</h3>
+                                <p class="text-secondary small mb-1">Total registrados</p>
+                            </div>
+                        </div>
+                        <!-- Tarjeta de Vehículos Disponibles (NUEVA) -->
+                <div class="card card-custom rounded-4 p-3 d-flex flex-row align-items-center">
+                    <div class="rounded-3 d-flex justify-content-center align-items-center me-3" style="width: 50px; height: 50px; background-color: rgba(216, 216, 238, 0.1);">
+                     <i class="bi bi-check2-circle fs-4 text-white"></i>
+                    </div>
+                    <div>
+                        <h3 class="fw-bold mb-0 text-white">--</h3>
+                        <p class="text-secondary small mb-1">Vehículos disponibles</p>
+                    </div>
+                </div>
+                        <div class="card card-custom rounded-4 p-3 d-flex flex-row align-items-center">
+                            <div class="rounded-3 d-flex justify-content-center align-items-center me-3" style="width: 50px; height: 50px; background-color: rgba(255, 212, 248, 0.1);">
+                                <i class="bi bi-tag fs-4 text-neon-pink"></i>
+                            </div>
+                            <div>
+                                <h3 class="fw-bold mb-0 text-neon-pink">--</h3>
+                                <p class="text-secondary small mb-1">Vehículos vendidos</p>
+                            </div>
+                        </div>
+                        <!-- Menú de Acciones Rápidas (Debajo de las tarjetas) -->
+<div class="mt-4 px-2">
+    <h6 class="fw-bold text-white mb-4">Acciones rápidas</h6>
+    
+    <div class="d-flex flex-column gap-3">
+        <!-- Importar -->
+        <a href="#" class="d-flex justify-content-between align-items-center text-decoration-none text-secondary">
+            <span><i class="bi bi-download me-3"></i> Importar vehículos</span>
+            <i class="bi bi-chevron-right small"></i>
+        </a>
+        
+        <!-- Exportar -->
+        <a href="#" class="d-flex justify-content-between align-items-center text-decoration-none text-secondary">
+            <span><i class="bi bi-upload me-3"></i> Exportar inventario</span>
+            <i class="bi bi-chevron-right small"></i>
+        </a>
+        
+        <!-- Generar reporte -->
+        <a href="#" class="d-flex justify-content-between align-items-center text-decoration-none text-secondary">
+            <span><i class="bi bi-file-earmark-text me-3"></i> Generar reporte</span>
+            <i class="bi bi-chevron-right small"></i>
+        </a>
+        
+        <!-- Configuración -->
+        <a href="#" class="d-flex justify-content-between align-items-center text-decoration-none text-secondary">
+            <span><i class="bi bi-gear me-3"></i> Configuración</span>
+            <i class="bi bi-chevron-right small"></i>
+        </a>
+    </div>
+</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <!-- ============================================== -->
+    <!-- MODAL EMERGENTE: AGREGAR AUTO                  -->
+    <!-- ============================================== -->
+    <div class="modal fade" id="modalAgregarAuto" tabindex="-1" aria-labelledby="modalAgregarAutoLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content card-custom text-white">
+                <div class="modal-header border-bottom border-secondary border-opacity-25">
+                    <h5 class="modal-title fw-bold" id="modalAgregarAutoLabel"><i class="bi bi-car-front text-neon-green me-2"></i>Agregar Nuevo Vehículo</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label small text-secondary">Marca</label>
+                                <input type="text" class="form-control bg-dark text-white border-secondary border-opacity-25" placeholder="Ej. Toyota">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label small text-secondary">Modelo</label>
+                                <input type="text" class="form-control bg-dark text-white border-secondary border-opacity-25" placeholder="Ej. Corolla">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label small text-secondary">Año</label>
+                                <input type="number" class="form-control bg-dark text-white border-secondary border-opacity-25" placeholder="2024">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label small text-secondary">Precio ($)</label>
+                                <input type="text" class="form-control bg-dark text-white border-secondary border-opacity-25" placeholder="0.00">
+                            </div>
+                            <div class="col-md-12">
+                                <label class="form-label small text-secondary">Placa / Matrícula</label>
+                                <input type="text" class="form-control bg-dark text-white border-secondary border-opacity-25" placeholder="ABC-123">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer border-top border-secondary border-opacity-25">
+                    <button type="button" class="btn btn-outline-secondary rounded-pill" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn bg-neon-green fw-bold rounded-pill px-4">Guardar Vehículo</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../JS/script.js"></script>
+</body>
+</html>
