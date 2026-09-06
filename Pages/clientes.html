@@ -46,6 +46,28 @@
         /* Paginación */
         .page-btn { background-color: #101218; border: 1px solid rgba(16, 18, 24); color: #EFF0EB; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 6px; cursor: pointer;}
         .page-btn.active { background-color: #DBFF99; color: #101218; border-color: #DBFF99; font-weight: bold; }
+
+        :root {
+            --bg-main: #07060B;
+            --bg-card: #0F1019;
+            --bg-card-hover: #151724;
+            --bg-sidebar: #0B0C12;
+            --bg-input: #161722;
+            
+            /* Rosa bajo sólido para botones activos */
+            --pink-soft: #E58FE5;
+            --pink-soft-glow: rgba(229, 143, 229, 0.25);
+            
+            --neon-purple: #A855F7;
+            --neon-purple-glow: rgba(168, 85, 247, 0.35);
+            --neon-lime: #A3E635;
+            --neon-lime-glow: rgba(163, 230, 53, 0.35);
+            --neon-blue: #38BDF8;
+            
+            --border-subtle: rgba(255, 255, 255, 0.08);
+            --text-muted-custom: #A1A1AA; 
+            --text-banner-sub: #CBD5E1;   
+        } 
         
     </style>
 </head>
@@ -138,7 +160,7 @@
                                 </div>
                                 <!-- Ilustración 3D (Ajusta la ruta de la imagen según corresponda) -->
                                 <div class="w-40 text-end position-relative" style="z-index: 1;">
-                                    <img src="../Assets/Clientes.png" alt="Iconos de clientes" class="img-fluid" style="max-height: 150px;">
+                                    <img src="../Assets/Clientes.png" alt="Iconos de clientes" class="img-fluid" style="max-height: 200px;">
                                 </div>
                             </div>
                         </div>
@@ -207,13 +229,12 @@
                                         </tbody>
                                     </table>
                                 </div>
-                                    
-                                <div class="d-flex justify-content-between align-items-center mt-3 text-secondary small">
-                                    <span>Mostrando 0 a 0 de 0 clientes</span>
+                               <div class="d-flex justify-content-between align-items-center mt-3 text-secondary small">
+                                    <span>Mostrando 0 a 0 de 0 compras</span>
                                     <div class="d-flex pagination-dark">
-                                        <button class="btn me-1"><i class="bi bi-chevron-left"></i></button>
-                                        <button class="btn btn-page-active me-1">1</button>
-                                        <button class="btn"><i class="bi bi-chevron-right"></i></button>
+                                        <button class="btn btn-sm btn-dark-page me-1"><i class="bi bi-chevron-left"></i></button>
+                                        <button class="btn btn-sm btn-page-active me-1">1</button>
+                                        <button class="btn btn-sm btn-dark-page"><i class="bi bi-chevron-right"></i></button>
                                     </div>
                                 </div>
                             </div>
