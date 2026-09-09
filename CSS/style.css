@@ -13,30 +13,6 @@ body {
     overflow-x: hidden;
 }
 
-/* --- Sidebar --- */
-.sidebar {
-    width: 222px;
-    min-width: 222px;
-    max-width: 222px;
-    height: 100vh;
-    flex: 0 0 222px;
-    flex-shrink: 0;
-    background-color: var(--ami-black);
-}
-
-.sidebar-link {
-    color: white !important;
-    background-color: transparent !important;
-    border: none !important;
-    transition: all 0.2s ease-in-out;
-}
-
-/* Efecto al pasar el mouse por un botón del menú */
-.sidebar-link:hover {
-    background-color: rgba(255, 255, 255, 0.05) !important;
-    transform: translateX(5px);
-}
-
 .active-tab {
     background-color: var(--ami-pink) !important;
     color: var(--ami-black) !important;
@@ -249,4 +225,35 @@ body.dark-theme {
 
 ::-webkit-scrollbar-thumb:hover {
     background: var(--neon-green); /* Se ilumina en verde neón al pasar el mouse */
+}
+/* --- Sidebar --- */
+.sidebar {
+   
+    width: 222px;
+    min-width: 222px;
+    max-width: 222px;
+    flex: 0 0 222px;
+    flex-shrink: 0;
+    
+    /* Colores */
+    background-color: var( rgba(16, 18, 24));
+    
+    /* LA MAGIA AQUÍ: Fija el sidebar al hacer scroll */
+    position: sticky;
+    top: 0;
+
+}
+.sidebar-link {
+    color: white !important;
+    background-color: transparent !important;
+    border: none !important;
+    transition: all 0.2s ease-in-out;
+    text-align: left; /* Asegura que el texto esté alineado a la izquierda */
+    padding: 10px 15px; /* Ajusta el espaciado si es necesario */
+}
+
+/* Efecto al pasar el mouse por un botón del menú */
+.sidebar-link:hover {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    transform: translateX(5px);
 }
