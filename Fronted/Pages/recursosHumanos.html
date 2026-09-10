@@ -83,6 +83,20 @@
 
         .btn-outline-neon { border: 1px solid var(--neon-green); color: var(--neon-green); background: transparent; transition: 0.3s; }
         .btn-outline-neon:hover { background: rgba(219, 255, 153, 0.1); color: var(--neon-green); }
+
+        .dropdown-item { cursor: pointer; }
+        .btn-editar-empleado, .btn-eliminar-empleado {
+            width: 100%;
+            text-align: left;
+            border: 0;
+            background: transparent;
+        }
+        .btn-editar-empleado:hover { background: rgba(255,255,255,.06); }
+        .btn-eliminar-empleado:hover { background: rgba(239,68,68,.10); }
+        .table-container { overflow-x: auto; width: 100%; }
+        .payroll-table { min-width: 1800px; }
+        .payroll-table th, .payroll-table td { white-space: nowrap; }
+        .employee-actions { white-space: nowrap; }
     </style>
 </head>
 <body>
@@ -97,25 +111,28 @@
                 <a href="../index.html" class="list-group-item list-group-item-action sidebar-link rounded-3 mb-2 bg-transparent border-0">
                     <i class="bi bi-house-door me-2"></i> Inicio
                 </a>
-                <a href="inventario.html" class="list-group-item list-group-item-action sidebar-link rounded-3 mb-2 bg-transparent border-0">
+                 <a href="inventario.html" class="list-group-item list-group-item-action sidebar-active rounded-3 mb-2">
                     <i class="bi bi-car-front me-2"></i> Inventario
                 </a>
-                <a href="ventas.html" class="list-group-item list-group-item-action sidebar-link rounded-3 mb-2 bg-transparent border-0">
+                <a href="ventas.html" class="list-group-item list-group-item-action sidebar-link rounded-3 mb-2 text-white bg-transparent">
                     <i class="bi bi-display me-2"></i> Ventas
                 </a>
-                <a href="compras.html" class="list-group-item list-group-item-action sidebar-link rounded-3 mb-2 bg-transparent border-0">
+                <a href="compras.html" class="list-group-item list-group-item-action sidebar-link rounded-3 mb-2 text-white bg-transparent">
                     <i class="bi bi-cart3 me-2"></i> Compras
                 </a>
-                <a href="clientes.html" class="list-group-item list-group-item-action sidebar-link rounded-3 mb-2 bg-transparent border-0">
+                <a href="clientes.html" class="list-group-item list-group-item-action sidebar-link rounded-3 mb-2 text-white bg-transparent">
                     <i class="bi bi-people me-2"></i> Clientes
                 </a>
-                <a href="marketing.html" class="list-group-item list-group-item-action sidebar-link rounded-3 mb-2 bg-transparent border-0">
+                <a href="marketing.html" class="list-group-item list-group-item-action sidebar-link rounded-3 mb-2 text-white bg-transparent">
                     <i class="bi bi-megaphone me-2"></i> Marketing
                 </a>
-                <a href="reportes.html" class="list-group-item list-group-item-action sidebar-link rounded-3 mb-2 bg-transparent border-0">
+                <a href="Costos.html" class="list-group-item list-group-item-action sidebar-link rounded-3 mb-2 text-white bg-transparent">
+                    <i class="bi bi-calculator me-2"></i> Costos
+                </a>
+                <a href="reportes.html" class="list-group-item list-group-item-action sidebar-link rounded-3 mb-2 text-white bg-transparent">
                     <i class="bi bi-bar-chart me-2"></i> Análisis
                 </a>
-                <a href="usuarios.html" class="list-group-item list-group-item-action sidebar-link rounded-3 mb-2 bg-transparent border-0">
+                <a href="usuarios.html" class="list-group-item list-group-item-action sidebar-link rounded-3 mb-2 text-white bg-transparent">
                     <i class="bi bi-person-gear me-2"></i> Usuarios
                 </a>
                 <a href="#" class="list-group-item list-group-item-action sidebar-active rounded-3 mb-2 border-0">
@@ -239,9 +256,9 @@
                                                             <i class="bi bi-three-dots-vertical fs-5"></i>
                                                         </button>
                                                         <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-dark-custom shadow-sm">
-                                                            <li><a class="dropdown-item text-white" href="#"><i class="bi bi-pencil-square me-2 text-neon"></i> Editar</a></li>
+                                                            <li><button type="button" class="dropdown-item text-white btn-editar-empleado"><i class="bi bi-pencil-square me-2 text-neon"></i>Editar</button></li>
                                                             <li><hr class="dropdown-divider border-secondary opacity-25 my-1"></li>
-                                                            <li><a class="dropdown-item text-danger" href="#"><i class="bi bi-trash me-2"></i> Eliminar</a></li>
+                                                            <li><button type="button" class="dropdown-item text-danger btn-eliminar-empleado"><i class="bi bi-trash me-2"></i>Eliminar</button></li>
                                                         </ul>
                                                     </div>
                                                 </td>
@@ -333,7 +350,7 @@
                         </select>
                     </div>
 
-                    <button class="btn btn-light btn-sm fw-bold">
+                    <button id="btnGenerarPlanilla" type="button" class="btn btn-light btn-sm fw-bold">
                         <i class="fa-solid fa-file-invoice me-1"></i>
                         Generar planilla
                     </button>
@@ -391,15 +408,16 @@
                                         <td><span class="placeholder-line" style="width: 90px;"></span></td>
                                         <td><span class="placeholder-line" style="width: 90px;"></span></td>
                                         <td><span class="placeholder-line" style="width: 90px;"></span></td>
+                                        <td><span class="placeholder-line" style="width: 90px;"></span></td>
                                         <td class="text-center">
                                                     <div class="dropdown">
                                                         <button class="btn btn-link text-secondary p-0 border-0" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                                             <i class="bi bi-three-dots-vertical fs-5"></i>
                                                         </button>
                                                         <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-dark-custom shadow-sm">
-                                                            <li><a class="dropdown-item text-white" href="#"><i class="bi bi-pencil-square me-2 text-neon"></i> Editar</a></li>
+                                                            <li><button type="button" class="dropdown-item text-white btn-editar-empleado"><i class="bi bi-pencil-square me-2 text-neon"></i>Editar</button></li>
                                                             <li><hr class="dropdown-divider border-secondary opacity-25 my-1"></li>
-                                                            <li><a class="dropdown-item text-danger" href="#"><i class="bi bi-trash me-2"></i> Eliminar</a></li>
+                                                            <li><button type="button" class="dropdown-item text-danger btn-eliminar-empleado"><i class="bi bi-trash me-2"></i>Eliminar</button></li>
                                                         </ul>
                                                     </div>
                                                 </td>
@@ -444,30 +462,120 @@
 </div>
 
     <script>
+        /*
+         * FRONTEND - RECURSOS HUMANOS
+         * Esta capa controla la interacción y presentación.
+         * La persistencia, eliminación real y cálculos serán responsabilidad del backend.
+         */
+
         const tbody = document.getElementById('employees-table-body');
 
+        // Datos temporales para comprobar la interfaz.
+        // Posteriormente pueden ser sustituidos por una respuesta del backend.
+        const listaEmpleadosMock = window.listaEmpleadosMock || [
+            {
+                id: 1,
+                codigo: "EMP-001",
+                nombre: "Empleado de ejemplo",
+                cedula: "000-000000-0000A",
+                correo: "empleado@ami.com",
+                telefono: "8888-8888",
+                direccion: "Managua, Nicaragua",
+                cargo: "Vendedor",
+                departamento: "Ventas",
+                fecha: "2026-01-15",
+                contrato: "T. Indeterminado",
+                salario: "C$ 18,000.00",
+                jornada: "Lunes a sábado",
+                horasExtra: "0",
+                estado: "Activo",
+                historial: [
+                    { mes: "Agosto 2026", monto: "C$ 18,000.00" },
+                    { mes: "Julio 2026", monto: "C$ 18,000.00" }
+                ]
+            }
+        ];
+
+        function escaparHTML(valor) {
+            return String(valor ?? "")
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+
         function renderizarTabla(datos) {
+            if (!tbody) return;
+
             tbody.innerHTML = "";
+
+            if (datos.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="8" class="text-center text-muted py-4">
+                            No se encontraron empleados con los filtros seleccionados.
+                        </td>
+                    </tr>`;
+                limpiarTarjeta();
+                return;
+            }
+
             datos.forEach((emp, index) => {
                 const tr = document.createElement('tr');
                 tr.className = "employee-row";
-                if(index === 0) tr.classList.add('selected'); // Selecciona el primero por defecto
+                tr.dataset.employeeId = emp.id;
+
+                if (index === 0) tr.classList.add('selected');
 
                 const claseEstado = emp.estado === 'Activo' ? 'activo' : 'inactivo';
 
                 tr.innerHTML = `
-                    <td>${emp.codigo}</td>
-                    <td>${emp.nombre}</td>
-                    <td>${emp.cargo}</td>
-                    <td>${emp.departamento}</td>
-                    <td>${emp.fecha}</td>
-                    <td>${emp.salario}</td>
-                    <td><span class="status ${claseEstado}">${emp.estado}</span></td>
-                    <td><i class="bi bi-three-dots-vertical text-muted cursor-pointer"></i></td>
+                    <td class="text-center">${escaparHTML(emp.codigo)}</td>
+                    <td class="text-center">${escaparHTML(emp.nombre)}</td>
+                    <td class="text-center">${escaparHTML(emp.cedula)}</td>
+                    <td class="text-center">${escaparHTML(emp.cargo)}</td>
+                    <td class="text-center">${escaparHTML(emp.departamento)}</td>
+                    <td class="text-center">${escaparHTML(emp.salario)}</td>
+                    <td class="text-center">
+                        <span class="status ${claseEstado}">${escaparHTML(emp.estado)}</span>
+                    </td>
+                    <td class="text-center employee-actions">
+                        <div class="dropdown">
+                            <button class="btn btn-link text-secondary p-0 border-0"
+                                    type="button"
+                                    data-bs-toggle="dropdown"
+                                    aria-expanded="false"
+                                    title="Acciones">
+                                <i class="bi bi-three-dots-vertical fs-5"></i>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-dark shadow-sm">
+                                <li>
+                                    <button type="button"
+                                            class="dropdown-item text-white btn-editar-empleado"
+                                            data-id="${escaparHTML(emp.id)}">
+                                        <i class="bi bi-pencil-square me-2 text-neon"></i>Editar
+                                    </button>
+                                </li>
+                                <li><hr class="dropdown-divider border-secondary opacity-25 my-1"></li>
+                                <li>
+                                    <button type="button"
+                                            class="dropdown-item text-danger btn-eliminar-empleado"
+                                            data-id="${escaparHTML(emp.id)}">
+                                        <i class="bi bi-trash me-2"></i>Eliminar
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                    </td>
                 `;
 
-                tr.addEventListener('click', () => {
-                    document.querySelectorAll('.employee-row').forEach(row => row.classList.remove('selected'));
+                tr.addEventListener('click', (event) => {
+                    if (event.target.closest('.dropdown')) return;
+
+                    document.querySelectorAll('.employee-row')
+                        .forEach(row => row.classList.remove('selected'));
+
                     tr.classList.add('selected');
                     actualizarTarjeta(emp);
                 });
@@ -475,40 +583,61 @@
                 tbody.appendChild(tr);
             });
 
-            if(datos.length > 0) {
-                actualizarTarjeta(datos[0]);
-            }
+            actualizarTarjeta(datos[0]);
         }
 
-        // Sistema de filtrado
         function aplicarFiltros() {
-            const txtBuscar = document.getElementById('searchInput').value.toLowerCase();
+            const txtBuscar = document.getElementById('searchInput').value.toLowerCase().trim();
             const valDepto = document.getElementById('filterDepto').value;
             const valEstado = document.getElementById('filterEstado').value;
 
             const datosFiltrados = listaEmpleadosMock.filter(emp => {
-                const cumpleBusqueda = emp.nombre.toLowerCase().includes(txtBuscar) || emp.codigo.toLowerCase().includes(txtBuscar);
-                const cumpleDepto = valDepto === "Todos" || emp.departamento === valDepto;
-                const cumpleEstado = valEstado === "Todos" || emp.estado === valEstado;
-                
+                const cumpleBusqueda =
+                    emp.nombre.toLowerCase().includes(txtBuscar) ||
+                    emp.codigo.toLowerCase().includes(txtBuscar) ||
+                    emp.cedula.toLowerCase().includes(txtBuscar);
+
+                const cumpleDepto =
+                    valDepto === "Todos" || emp.departamento === valDepto;
+
+                const cumpleEstado =
+                    valEstado === "Todos" || emp.estado === valEstado;
+
                 return cumpleBusqueda && cumpleDepto && cumpleEstado;
             });
 
             renderizarTabla(datosFiltrados);
         }
 
+        function limpiarTarjeta() {
+            document.getElementById('p-nombre').innerText = "Seleccione empleado";
+            document.getElementById('p-cargo-header').innerText = "-";
+            document.getElementById('p-depto-header').innerText = "-";
+
+            const badge = document.getElementById('p-badge');
+            badge.style.display = "none";
+
+            [
+                'p-codigo', 'p-cargo', 'p-depto', 'p-fecha',
+                'p-contrato', 'p-salario', 'p-jornada',
+                'p-correo', 'p-telefono', 'p-direccion', 'p-cedula'
+            ].forEach(id => document.getElementById(id).innerText = "-");
+
+            document.getElementById('p-historial-container').innerHTML = "";
+        }
+
         function actualizarTarjeta(emp) {
-            // Header
             document.getElementById('p-nombre').innerText = emp.nombre;
             document.getElementById('p-cargo-header').innerText = emp.cargo;
             document.getElementById('p-depto-header').innerText = emp.departamento;
-            
+
             const badge = document.getElementById('p-badge');
             badge.style.display = "inline-block";
             badge.innerText = emp.estado;
-            badge.className = emp.estado === 'Activo' ? 'status activo' : 'status inactivo';
+            badge.className = emp.estado === 'Activo'
+                ? 'status activo'
+                : 'status inactivo';
 
-            // Tab Laboral
             document.getElementById('p-codigo').innerText = emp.codigo;
             document.getElementById('p-cargo').innerText = emp.cargo;
             document.getElementById('p-depto').innerText = emp.departamento;
@@ -517,54 +646,140 @@
             document.getElementById('p-salario').innerText = emp.salario;
             document.getElementById('p-jornada').innerText = emp.jornada;
 
-            // Tab Personal
             document.getElementById('p-correo').innerText = emp.correo;
             document.getElementById('p-telefono').innerText = emp.telefono;
             document.getElementById('p-direccion').innerText = emp.direccion;
             document.getElementById('p-cedula').innerText = emp.cedula;
 
-            // Tab Historial
             const histContainer = document.getElementById('p-historial-container');
             histContainer.innerHTML = "";
-            if(emp.historial.length > 0) {
+
+            if (emp.historial && emp.historial.length > 0) {
                 emp.historial.forEach(pago => {
                     histContainer.innerHTML += `
-                        <div class="d-flex justify-content-between align-items-center p-2 rounded" style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle);">
+                        <div class="d-flex justify-content-between align-items-center p-2 rounded"
+                             style="background: rgba(255,255,255,0.03); border: 1px solid var(--border-subtle);">
                             <div>
-                                <p class="mb-0 text-white small">${pago.mes}</p>
-                                <small class="text-muted" style="font-size: 0.7rem;">Transferencia bancaria</small>
+                                <p class="mb-0 text-white small">${escaparHTML(pago.mes)}</p>
+                                <small class="text-muted" style="font-size: 0.7rem;">
+                                    Transferencia bancaria
+                                </small>
                             </div>
-                            <span class="text-neon-green fw-bold small">${pago.monto}</span>
-                        </div>
-                    `;
+                            <span class="text-neon-green fw-bold small">
+                                ${escaparHTML(pago.monto)}
+                            </span>
+                        </div>`;
                 });
             } else {
-                histContainer.innerHTML = `<p class="text-muted small text-center mt-3">No hay registros de pago recientes.</p>`;
+                histContainer.innerHTML = `
+                    <p class="text-muted small text-center mt-3">
+                        No hay registros de pago recientes.
+                    </p>`;
             }
         }
 
-        // Navegación de pestañas principales (la que ya tenías)
         function switchMainTab(viewName, clickedTab) {
-            document.querySelectorAll('.custom-tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.custom-tab')
+                .forEach(t => t.classList.remove('active'));
+
             clickedTab.classList.add('active');
 
-            document.querySelectorAll('.view-section').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.view-section')
+                .forEach(s => s.classList.remove('active'));
+
             document.getElementById('view-' + viewName).classList.add('active');
         }
 
-        // Navegación de pestañas internas de la tarjeta
         function switchInnerTab(tabName, clickedTab) {
-            document.querySelectorAll('.inner-tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.inner-tab')
+                .forEach(t => t.classList.remove('active'));
+
             clickedTab.classList.add('active');
 
-            document.querySelectorAll('.inner-view').forEach(v => v.classList.remove('active'));
+            document.querySelectorAll('.inner-view')
+                .forEach(v => v.classList.remove('active'));
+
             document.getElementById('inner-' + tabName).classList.add('active');
         }
 
-        // Inicialización
-        window.onload = () => {
+        /*
+         * PUNTOS DE CONEXIÓN CON BACKEND
+         * --------------------------------
+         * No hacen persistencia ni cálculos todavía.
+         * El backend podrá reemplazar estas funciones con fetch/AJAX.
+         */
+
+        function guardarEmpleado() {
+            const datos = {
+                nombre: document.getElementById('empleadoNombre')?.value,
+                cedula: document.getElementById('empleadoCedula')?.value,
+                correo: document.getElementById('empleadoCorreo')?.value,
+                telefono: document.getElementById('empleadoTelefono')?.value,
+                direccion: document.getElementById('empleadoDireccion')?.value,
+                codigo: document.getElementById('empleadoCodigo')?.value,
+                cargo: document.getElementById('empleadoCargo')?.value,
+                contrato: document.getElementById('empleadoContrato')?.value,
+                departamento: document.getElementById('empleadoDepartamento')?.value,
+                salario: document.getElementById('empleadoSalario')?.value,
+                jornada: document.getElementById('empleadoJornada')?.value,
+                horasExtra: document.getElementById('empleadoHorasExtra')?.value,
+                fecha: document.getElementById('empleadoFecha')?.value,
+                estado: document.getElementById('empleadoEstado')?.value
+            };
+
+            console.log("HOOK BACKEND - POST /empleados", datos);
+        }
+
+        function editarEmpleado(id) {
+            console.log("HOOK BACKEND - GET/EDIT empleado:", id);
+            // Aquí posteriormente se abrirá el formulario de edición
+            // y/o se conectará con PUT/PATCH.
+        }
+
+        function eliminarEmpleado(id) {
+            console.log("HOOK BACKEND - DELETE empleado:", id);
+            // Aquí posteriormente se agregará confirmación y DELETE.
+        }
+
+        function generarPlanilla() {
+            const periodo = document.querySelector('#view-planilla select:nth-of-type(1)')?.value;
+            const quincena = document.querySelector('#view-planilla select:nth-of-type(2)')?.value;
+
+            console.log("HOOK BACKEND - GENERAR PLANILLA", {
+                periodo,
+                quincena
+            });
+
+            // Los cálculos de salario, INSS, IR, deducciones,
+            // salario neto, INSS patronal y total a pagar
+            // serán realizados por el backend.
+        }
+
+        // Acciones de la tabla.
+        document.addEventListener('click', (event) => {
+            const btnEditar = event.target.closest('.btn-editar-empleado');
+            const btnEliminar = event.target.closest('.btn-eliminar-empleado');
+
+            if (btnEditar) {
+                event.stopPropagation();
+                editarEmpleado(btnEditar.dataset.id);
+            }
+
+            if (btnEliminar) {
+                event.stopPropagation();
+                eliminarEmpleado(btnEliminar.dataset.id);
+            }
+        });
+
+        document.getElementById('btnGuardarEmpleado')
+            ?.addEventListener('click', guardarEmpleado);
+
+        document.getElementById('btnGenerarPlanilla')
+            ?.addEventListener('click', generarPlanilla);
+
+        window.addEventListener('load', () => {
             renderizarTabla(listaEmpleadosMock);
-        };
+        });
     </script>
     <div class="modal fade" id="modalEmpleado" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
@@ -574,48 +789,48 @@
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form>
+                <form id="formEmpleado" novalidate>
                     <div class="row g-3">
                             <h8 class="modal-title fw-bold"></i>Información Personal</h8>
                         <div class="col-md-6">
                             <label class="form-label small text-secondary">Nombre Completo</label>
-                            <input type="text" class="form-control form-control-dark" placeholder="Nombre del trabajador">
+                            <input type="text" class="form-control form-control-dark" id="empleadoNombre" placeholder="Nombre del trabajador">
                         </div>
                         <div class="col-md-6">
                             <label class="form-label small text-secondary">Cedula</label>
-                            <input type="text" class="form-control form-control-dark" placeholder="Cedula del trabajador">
+                            <input type="text" class="form-control form-control-dark" id="empleadoCedula" placeholder="Cédula del trabajador">
                         </div>
                          <div class="col-md-6">
                             <label class="form-label small text-secondary">Correo</label>
-                            <input type="text" class="form-control form-control-dark" placeholder="Correo del trabajador">
+                            <input type="text" class="form-control form-control-dark" id="empleadoCorreo" placeholder="Correo del trabajador">
                         </div>
                          <div class="col-md-6">
                             <label class="form-label small text-secondary">Telefono</label>
-                            <input type="text" class="form-control form-control-dark" placeholder="Telefono del trabajador">
+                            <input type="text" class="form-control form-control-dark" id="empleadoTelefono" placeholder="Teléfono del trabajador">
                         </div>
                         <div class="col-md-6">
                             <label class="form-label small text-secondary">Direccion</label>
-                            <input type="text" class="form-control form-control-dark" placeholder="Telefono del trabajador">
+                            <input type="text" class="form-control form-control-dark" id="empleadoTelefono" placeholder="Teléfono del trabajador">
                         </div>
                         <h8 class="modal-title fw-bold"></i>Información Laboral</h8>
                         <div class="col-md-6">
                             <label class="form-label small text-secondary">Codigo</label>
-                            <input type="text" class="form-control form-control-dark" placeholder="Codigo del trabajador">
+                            <input type="text" class="form-control form-control-dark" id="empleadoCodigo" placeholder="Código del trabajador">
                         </div>
                         <div class="col-md-6">
                             <label class="form-label small text-secondary">Cargo</label>
-                            <input type="text" class="form-control form-control-dark" placeholder="Cargo del trabajador">
+                            <input type="text" class="form-control form-control-dark" id="empleadoCargo" placeholder="Cargo del trabajador">
                         </div>
                          <div class="col-md-6">
                             <label class="form-label small text-secondary">Tipo de contrato</label>
-                            <select class="form-select form-control-dark">
+                            <select id="empleadoContrato" class="form-select form-control-dark">
                                     <option>T. Determinado</option>
                                     <option>T. Indeterminado</option>
                                 </select>
                         </div>
                        <div class="col-md-6">
                             <label class="form-label small text-secondary">Departamento</label>
-                             <select class="form-select form-control-dark">
+                             <select id="empleadoDepartamento" class="form-select form-control-dark">
                                     <option>Ventas</option>
                                     <option>Contabilidad</option>
                                     <option>Taller</option>
@@ -624,30 +839,30 @@
                         </div>                      
                                <div class="col-md-6">
                             <label class="form-label small text-secondary">Salario (C$)</label>
-                            <input type="number" step="0.01" class="form-control form-control-dark" placeholder="0.00">
+                            <input type="number" id="empleadoSalario" step="0.01" class="form-control form-control-dark" placeholder="0.00">
                         </div>
                         <div class="col-md-6">
                             <label class="form-label small text-secondary">Jornada</label>
-                            <input type="text" class="form-control form-control-dark" placeholder="Jornada del trabajador">
+                            <input type="text" id="empleadoJornada" class="form-control form-control-dark" placeholder="Jornada del trabajador">
                         </div>
                         <div class="col-md-6">
                             <label class="form-label small text-secondary">Horas extra</label>
-                            <input type="text" class="form-control form-control-dark" placeholder="si aplica">
+                            <input type="text" id="empleadoHorasExtra" class="form-control form-control-dark" placeholder="Si aplica">
                         </div>
                         <div class="col-md-6">
                             <label class="form-label small text-secondary">Fecha de ingreso</label>
-                            <input type="date" class="form-control form-control-dark">
+                            <input id="empleadoFecha" type="date" class="form-control form-control-dark">
                         </div>
                          <div class="col-md-6">
                                 <label class="form-label small text-secondary">Estado</label>
-                                <select class="form-select form-control-dark">
+                                <select id="empleadoEstado" class="form-select form-control-dark">
                                     <option>Activo</option>
                                     <option>Inactivo</option>
                                 </select>
                             </div>
                         <div class="modal-footer border-top border-secondary border-opacity-25">
                     <button type="button" class="btn border-secondary text-white rounded-pill px-4" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="button" class="btn bg-neon-green fw-bold rounded-pill px-4 text-dark">Guardar Venta</button>
+                    <button id="btnGuardarEmpleado" type="button" class="btn bg-neon-green fw-bold rounded-pill px-4 text-dark">Guardar empleado</button>
                 </div>
                     </div>
 
